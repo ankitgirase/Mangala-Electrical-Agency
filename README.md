@@ -6,7 +6,7 @@ Professional website for Mangala Electrical Agency, Ner, Yavatmal, Maharashtra.
 - **Frontend**: Pure HTML5, CSS3, Vanilla JS (no framework needed)
 - **Backend**: Node.js + Express
 - **Email**: Nodemailer (Gmail SMTP or any SMTP)
-- **Data Storage**: Local JSON file (`enquiries.json`) — can be upgraded to MongoDB/MySQL
+- **Data Storage**: upgraded to MongoDB/MySQL
 
 ---
 
