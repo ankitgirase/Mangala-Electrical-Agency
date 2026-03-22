@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mangala Electrical Agency | Manpower Solutions for Solar & Electrical Infrastructure</title>
+  <meta name="description" content="Reliable manpower solutions for solar and electrical infrastructure across Maharashtra. MSEDCL utility works, solar plant support, and general manpower supply." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #0056b3;
+      --blue-dark: #003d80;
+      --blue-light: #1a6fd4;
+      --yellow: #ffcc00;
+      --yellow-dark: #e6b800;
+      --white: #ffffff;
+      --off-white: #f4f6f9;
+      --grey-light: #e8ecf0;
+      --grey: #8a95a3;
+      --grey-dark: #4a5568;
+      --black: #0a0e17;
+      --bg-dark: #0d1421;
+      --bg-card: #111827;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ─────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10, 14, 23, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--yellow);
+      transition: all 0.3s ease;
+    }
+    .header-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--yellow);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .logo-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .logo-tagline {
+      font-size: 0.65rem;
+      color: var(--yellow);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    nav a:hover {
+      color: var(--yellow);
+      background: rgba(255,204,0,0.08);
+    }
+    .btn-quote {
+      background: var(--yellow);
+      color: var(--black) !important;
+      font-weight: 700 !important;
+      padding: 8px 18px !important;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s !important;
+    }
+    .btn-quote:hover {
+      background: var(--yellow-dark) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255,204,0,0.3);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--bg-dark);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(0,86,179,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,204,0,0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0e17 0%, #0d1a30 100%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,86,179,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,86,179,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-circuit {
+      position: absolute;
+      right: 0; top: 0;
+      width: 55%; height: 100%;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='none'/%3E%3Cpath d='M50 200 L150 200 L150 100 L250 100 L250 200 L350 200' stroke='%23ffcc00' stroke-width='2' fill='none'/%3E%3Ccircle cx='150' cy='200' r='5' fill='%23ffcc00'/%3E%3Ccircle cx='250' cy='200' r='5' fill='%23ffcc00'/%3E%3Cpath d='M200 50 L200 150 L300 150 L300 250 L200 250 L200 350' stroke='%230056b3' stroke-width='2' fill='none'/%3E%3Ccircle cx='200' cy='150' r='5' fill='%230056b3'/%3E%3Ccircle cx='200' cy='250' r='5' fill='%230056b3'/%3E%3C/svg%3E");
+      background-size: 400px 400px;
+    }
+    .power-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+      animation: powerflow 3s linear infinite;
+      opacity: 0;
+    }
+    .power-line:nth-child(1) { top: 30%; width: 30%; left: -30%; animation-delay: 0s; }
+    .power-line:nth-child(2) { top: 60%; width: 20%; left: -20%; animation-delay: 1.5s; }
+    .power-line:nth-child(3) { top: 75%; width: 25%; left: -25%; animation-delay: 0.8s; }
+    @keyframes powerflow {
+      0%   { left: -30%; opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.6; }
+      100% { left: 110%; opacity: 0; }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,204,0,0.1);
+      border: 1px solid rgba(255,204,0,0.3);
+      color: var(--yellow);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--yellow);
+      border-radius: 50%;
+      animation: pulse 1.5s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero-headline em { font-style: normal; color: var(--yellow); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+      font-weight: 300;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-primary:hover {
+      background: var(--yellow-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,204,0,0.35);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--yellow);
+    }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 4px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SECTION COMMON ─────────────────────────── */
+    section { padding: 6rem 0; }
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,86,179,0.08);
+      border: 1px solid rgba(0,86,179,0.2);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: normal; color: var(--blue); }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--grey-dark);
+      line-height: 1.7;
+      max-width: 580px;
+      font-weight: 300;
+    }
+
+    /* ─── ABOUT ──────────────────────────────────── */
+    #about { background: var(--off-white); position: relative; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-visual { position: relative; }
+    .about-img-block {
+      background: var(--bg-dark);
+      border-radius: 12px;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-img-block svg { width: 80%; height: 80%; }
+    .about-badge-float {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: var(--yellow);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 12px 32px rgba(255,204,0,0.25);
+    }
+    .about-badge-float .num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--black);
+      line-height: 1;
+    }
+    .about-badge-float .lbl {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(0,0,0,0.65);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .about-points {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .about-point { display: flex; align-items: flex-start; gap: 14px; }
+    .about-point-icon {
+      width: 36px; height: 36px;
+      background: rgba(0,86,179,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+    .about-point-text strong { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
+    .about-point-text span { font-size: 0.85rem; color: var(--grey-dark); }
+
+    /* ─── SERVICES ───────────────────────────────── */
+    #services { background: var(--bg-dark); position: relative; }
+    #services .section-title { color: var(--white); }
+    #services .section-sub { color: rgba(255,255,255,0.5); }
+    #services .section-tag { background: rgba(255,204,0,0.08); border-color: rgba(255,204,0,0.2); color: var(--yellow); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,204,0,0.2); transform: translateY(-4px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 10px;
+      background: rgba(255,204,0,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 1.25rem;
+    }
+    .service-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .service-items { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .service-items li {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .service-items li::before { content: '—'; color: var(--yellow); flex-shrink: 0; font-weight: 700; }
+
+    /* ─── WHY CHOOSE US ──────────────────────────── */
+    #why { background: var(--white); position: relative; overflow: hidden; }
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .why-card {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      background: var(--off-white);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--yellow));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .why-card:hover { border-color: rgba(0,86,179,0.12); box-shadow: 0 8px 24px rgba(0,86,179,0.08); }
+    .why-card:hover::after { transform: scaleX(1); }
+    .why-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .why-content h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      color: var(--black);
+    }
+    .why-content p { font-size: 0.88rem; color: var(--grey-dark); line-height: 1.65; }
+
+    /* ─── COMPLIANCE ─────────────────────────────── */
+    #compliance { background: var(--bg-dark); }
+    #compliance .section-title { color: var(--white); }
+    #compliance .section-sub { color: rgba(255,255,255,0.5); }
+    #compliance .section-tag { background: rgba(255,204,0,0.08); border-color: rgba(255,204,0,0.2); color: var(--yellow); }
+    .compliance-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .compliance-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .compliance-card:hover { background: rgba(255,204,0,0.05); border-color: rgba(255,204,0,0.25); transform: translateY(-4px); }
+    .compliance-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .compliance-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .compliance-card p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ─── PROJECTS ───────────────────────────────── */
+    #projects { background: var(--off-white); }
+    .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .project-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-dark);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    .project-visual {
+      height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-visual.solar { background: linear-gradient(135deg, #0a0e17, #0d2a4a); }
+    .project-visual.line  { background: linear-gradient(135deg, #0a0e17, #1a0a2e); }
+    .project-visual.sub   { background: linear-gradient(135deg, #0a0e17, #0d1a10); }
+    .project-visual::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,14,23,0.8), transparent);
+    }
+    .project-info { padding: 1.5rem; }
+    .project-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow); margin-bottom: 0.5rem; }
+    .project-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .project-desc { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ─── CONTACT ────────────────────────────────── */
+    #contact { background: var(--bg-dark); position: relative; }
+    #contact .section-title { color: var(--white); }
+    #contact .section-sub { color: rgba(255,255,255,0.5); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; margin-top: 3rem; }
+    .contact-info h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--yellow); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 2rem;
+    }
+    .contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 1.5rem; }
+    .contact-detail-icon {
+      width: 40px; height: 40px;
+      background: rgba(0,86,179,0.2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .contact-detail strong { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 3px; }
+    .contact-detail span { font-size: 0.95rem; color: var(--white); }
+    .contact-form {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+    .contact-form h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--white); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 1.75rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
+    .form-group label { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; text-transform: uppercase; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.92rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group select option { background: var(--bg-dark); color: var(--white); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--yellow);
+      background: rgba(255,204,0,0.04);
+    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    /* ─── FORM VALIDATION STYLES ─────────────────── */
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #f87171 !important;
+      background: rgba(248,113,113,0.05) !important;
+    }
+    .field-error {
+      font-size: 0.75rem;
+      color: #f87171;
+      margin-top: 2px;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+
+    .form-submit {
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 14px 32px;
+      border: none; border-radius: 8px;
+      cursor: pointer; width: 100%;
+      transition: all 0.25s;
+    }
+    .form-submit:hover {
+      background: var(--yellow-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,204,0,0.3);
+    }
+    .form-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      color: #4ade80;
+      font-size: 1rem;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer { background: #060a12; border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 0 1.5rem; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.7; margin-top: 1rem; max-width: 260px; }
+    .footer-col h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--yellow); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a { font-size: 0.83rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ─── FLOATING CTA ───────────────────────────── */
+    .floating-call {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      z-index: 900;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(255,204,0,0.35);
+      display: flex; align-items: center; gap: 8px;
+      transition: all 0.25s;
+      animation: float 3s ease-in-out infinite;
+    }
+    .floating-call:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(255,204,0,0.45); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* ─── SCROLL ANIMATIONS ──────────────────────── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── MODAL ──────────────────────────────────── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 2000;
+      align-items: center; justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--bg-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 90%; max-width: 520px;
+      position: relative;
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: none; border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.5rem; cursor: pointer;
+      line-height: 1; transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--white); }
+    .modal h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: var(--white); text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .modal > p { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
+
+    /* ─── MOBILE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .compliance-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { display: none; }
+      nav.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 72px; left: 0; right: 0;
+        background: var(--bg-dark);
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        gap: 0.25rem;
+      }
+      .hamburger { display: flex; }
+      .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-badge-float { right: 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .compliance-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════ -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#home" class="logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">
+        <span class="logo-name">Mangala Electrical</span>
+        <span class="logo-tagline">Agency · Yavatmal, Maharashtra</span>
+      </div>
+    </a>
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#services">Our Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#contact" class="btn-quote">Get a Quote</a>
+    </nav>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HERO ══════════════════════════════════════════ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-circuit"></div>
+  <div class="power-line"></div>
+  <div class="power-line"></div>
+  <div class="power-line"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">🏭 Maharashtra's Trusted Electrical Manpower</div>
+      <h1 class="hero-headline">
+        Reliable<br />
+        <em>Manpower</em><br />
+        Solutions
+      </h1>
+      <p class="hero-sub">
+        Providing skilled, semi-skilled, and unskilled labor for large-scale solar projects and MSEDCL utility works across Maharashtra. Compliant, trained, and always on-site.
+      </p>
+      <div class="hero-ctas">
+        <a href="#services" class="btn-primary">
+          <span>View Our Services</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:+919999999999" class="btn-secondary">
+          📞 Call Now: +91-XXXXX XXXXX
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Workers Deployable</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">PF/ESIC Compliant</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Support Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ══════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img-block">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <rect x="40" y="160" width="80" height="50" rx="3" fill="#0056b3" opacity="0.7"/>
+            <rect x="45" y="165" width="33" height="40" rx="1" fill="#1a6fd4" opacity="0.5"/>
+            <rect x="82" y="165" width="33" height="40" rx="1" fill="#1a6fd4" opacity="0.5"/>
+            <line x1="78" y1="160" x2="78" y2="210" stroke="#ffcc00" stroke-width="1.5"/>
+            <line x1="40" y1="185" x2="120" y2="185" stroke="#ffcc00" stroke-width="1.5"/>
+            <rect x="140" y="150" width="80" height="50" rx="3" fill="#0056b3" opacity="0.7"/>
+            <rect x="145" y="155" width="33" height="40" rx="1" fill="#1a6fd4" opacity="0.5"/>
+            <rect x="182" y="155" width="33" height="40" rx="1" fill="#1a6fd4" opacity="0.5"/>
+            <line x1="178" y1="150" x2="178" y2="200" stroke="#ffcc00" stroke-width="1.5"/>
+            <line x1="140" y1="175" x2="220" y2="175" stroke="#ffcc00" stroke-width="1.5"/>
+            <rect x="240" y="140" width="80" height="50" rx="3" fill="#0056b3" opacity="0.7"/>
+            <rect x="245" y="145" width="33" height="40" rx="1" fill="#1a6fd4" opacity="0.5"/>
+            <rect x="282" y="145" width="33" height="40" rx="1" fill="#1a6fd4" opacity="0.5"/>
+            <line x1="278" y1="140" x2="278" y2="190" stroke="#ffcc00" stroke-width="1.5"/>
+            <line x1="240" y1="165" x2="320" y2="165" stroke="#ffcc00" stroke-width="1.5"/>
+            <line x1="350" y1="280" x2="350" y2="50" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+            <line x1="320" y1="100" x2="380" y2="100" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+            <line x1="325" y1="150" x2="375" y2="150" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+            <line x1="320" y1="100" x2="310" y2="130" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
+            <line x1="380" y1="100" x2="390" y2="130" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="60" cy="60" r="20" fill="#ffcc00" opacity="0.9"/>
+            <line x1="60" y1="30" x2="60" y2="15" stroke="#ffcc00" stroke-width="2" opacity="0.6"/>
+            <line x1="87" y1="60" x2="102" y2="60" stroke="#ffcc00" stroke-width="2" opacity="0.6"/>
+            <line x1="79" y1="38" x2="90" y2="27" stroke="#ffcc00" stroke-width="2" opacity="0.6"/>
+            <line x1="38" y1="38" x2="27" y2="27" stroke="#ffcc00" stroke-width="2" opacity="0.6"/>
+            <circle cx="160" cy="250" r="10" fill="#ffcc00" opacity="0.8"/>
+            <rect x="155" y="260" width="10" height="20" rx="2" fill="#0056b3" opacity="0.8"/>
+            <circle cx="200" cy="245" r="10" fill="#ffcc00" opacity="0.8"/>
+            <rect x="195" y="255" width="10" height="20" rx="2" fill="#0056b3" opacity="0.8"/>
+            <line x1="0" y1="280" x2="400" y2="280" stroke="#ffffff" stroke-width="1" opacity="0.1"/>
+          </svg>
+        </div>
+        <div class="about-badge-float">
+          <div class="num">15+</div>
+          <div class="lbl">Years of trust</div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <span class="section-tag">About Mangala Electrical</span>
+        <h2 class="section-title">Maharashtra's <em>Premier</em> Electrical Manpower Agency</h2>
+        <p class="section-sub">
+          Based in Ner, Yavatmal, Mangala Electrical Agency has been the backbone of electrical infrastructure projects across Maharashtra. From MSEDCL utility works to large-scale solar power installations, we deliver trained, safe, and compliant workforce solutions.
+        </p>
+        <div class="about-points">
+          <div class="about-point">
+            <div class="about-point-icon">🔌</div>
+            <div class="about-point-text">
+              <strong>MSEDCL Utility Specialist</strong>
+              <span>Deep expertise in LT/HT line works, substation support, and transformer installation across Maharashtra.</span>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="about-point-icon">☀️</div>
+            <div class="about-point-text">
+              <strong>Solar Power Plant Support</strong>
+              <span>Pre-commissioning and ongoing maintenance labor for utility-scale solar installations.</span>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="about-point-icon">👷</div>
+            <div class="about-point-text">
+              <strong>Skilled Workforce Pool</strong>
+              <span>From certified electricians to site security — all workers are trained and PPE-equipped.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══════════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">What We Do</span>
+      <h2 class="section-title" style="color:var(--white)">Our <em style="color:var(--yellow)">Core Services</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5)">Comprehensive manpower solutions for the electrical and solar energy sector — from installation to maintenance.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">☀️</div>
+        <div class="service-title">Solar Power Plant Support</div>
+        <ul class="service-items">
+          <li>Pre-commissioning labor supply</li>
+          <li>Panel installation &amp; mounting assistance</li>
+          <li>Ongoing O&amp;M support manpower</li>
+          <li>Skilled &amp; semi-skilled electrical workers</li>
+          <li>Site supervision and safety monitoring</li>
+        </ul>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">⚡</div>
+        <div class="service-title">MSEDCL &amp; Utility Works</div>
+        <ul class="service-items">
+          <li>LT/HT Line Maintenance and Erection</li>
+          <li>Substation labor support</li>
+          <li>Transformer installation assistance</li>
+          <li>Underground cable laying crew</li>
+          <li>MSEDCL-standard trained workers</li>
+        </ul>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">👷</div>
+        <div class="service-title">General Manpower Supply</div>
+        <ul class="service-items">
+          <li>Site Security &amp; Supervisors</li>
+          <li>Skilled Electricians and Technicians</li>
+          <li>Loading/Unloading and Site Cleaning</li>
+          <li>Civil support workers</li>
+          <li>General unskilled labor</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY CHOOSE US ══════════════════════════════════ -->
+<section id="why">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto 0;">
+      <span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title">Built on <em>Trust</em>, Delivered with <em>Safety</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🦺</div>
+        <div class="why-content">
+          <h3>Safety First</h3>
+          <p>Every worker is equipped with essential PPE — helmets, gloves, safety boots, and harnesses. We conduct regular safety briefings and follow all IS/MSEDCL safety protocols on every site.</p>
+        </div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">📋</div>
+        <div class="why-content">
+          <h3>100% Legal Compliance</h3>
+          <p>Fully compliant with Provident Fund (PF), ESIC, and Labour License regulations. We handle all statutory requirements so you can focus on your project without compliance headaches.</p>
+        </div>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">📍</div>
+        <div class="why-content">
+          <h3>Local Expertise</h3>
+          <p>Deep-rooted understanding of the Yavatmal region and MSEDCL operational standards. Our local knowledge ensures faster mobilization, better coordination, and zero cultural friction on site.</p>
+        </div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">🏗️</div>
+        <div class="why-content">
+          <h3>Scalable Deployment</h3>
+          <p>Whether you need 50 or 500+ workers, we mobilize fast. Our extensive local workforce pool enables rapid scale-up for large solar projects, MSEDCL emergency work, or seasonal requirements.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPLIANCE ═════════════════════════════════════ -->
+<section id="compliance">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto 0;">
+      <span class="section-tag">Our Certifications</span>
+      <h2 class="section-title" style="color:var(--white)">Full <em style="color:var(--yellow)">Legal Compliance</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5); margin:0 auto;">We maintain all statutory and regulatory requirements to ensure your project runs without interruption.</p>
+    </div>
+    <div class="compliance-grid">
+      <div class="compliance-card reveal reveal-delay-1">
+        <div class="compliance-icon">🛡️</div>
+        <h3>PF Registered</h3>
+        <p>All workers enrolled under Provident Fund with timely employer and employee contributions.</p>
+      </div>
+      <div class="compliance-card reveal reveal-delay-2">
+        <div class="compliance-icon">🏥</div>
+        <h3>ESIC Covered</h3>
+        <p>Employee State Insurance Corporation coverage for all workers — medical protection included.</p>
+      </div>
+      <div class="compliance-card reveal reveal-delay-1">
+        <div class="compliance-icon">📜</div>
+        <h3>Labour License</h3>
+        <p>Valid contractor labour license as required under the Contract Labour (R&amp;A) Act, 1970.</p>
+      </div>
+      <div class="compliance-card reveal reveal-delay-2">
+        <div class="compliance-icon">⚠️</div>
+        <h3>Safety Trained</h3>
+        <p>All field workers undergo mandatory safety induction and are briefed on site-specific hazards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══════════════════════════════════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="projects-header reveal">
+      <div>
+        <span class="section-tag">Our Work</span>
+        <h2 class="section-title">Featured <em>Projects</em></h2>
+      </div>
+      <p style="font-size:0.9rem;color:var(--grey-dark);max-width:300px;text-align:right;">Trusted by industry leaders across Maharashtra's energy infrastructure sector.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-visual solar"><span style="position:relative;z-index:1;">☀️</span></div>
+        <div class="project-info">
+          <div class="project-tag">Solar Power Plant</div>
+          <div class="project-name">Avaada Energy — Yavatmal</div>
+          <p class="project-desc">Pre-commissioning labor supply for a utility-scale solar installation. Deployed 200+ workers for panel erection and cable laying.</p>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-visual line"><span style="position:relative;z-index:1;">⚡</span></div>
+        <div class="project-info">
+          <div class="project-tag">MSEDCL Utility Work</div>
+          <div class="project-name">HT Line Erection — Nanded Division</div>
+          <p class="project-desc">End-to-end manpower for 33KV HT line erection including pole installation, stringing, and cross-arm fixing.</p>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-visual sub"><span style="position:relative;z-index:1;">🏭</span></div>
+        <div class="project-info">
+          <div class="project-tag">Substation Support</div>
+          <div class="project-name">33/11KV Substation — Washim</div>
+          <p class="project-desc">Labour support for substation establishment including transformer installation and switchgear assembly assistance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag" style="background:rgba(255,204,0,0.08);border-color:rgba(255,204,0,0.2);color:var(--yellow);">Get In Touch</span>
+      <h2 class="section-title" style="color:var(--white)">Request <em style="color:var(--yellow)">Manpower</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.5);">Fill out the form and our team will respond within 24 hours with a customized manpower proposal.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Contact Information</h3>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div>
+            <strong>Office Address</strong>
+            <span>Ner, Yavatmal District,<br/>Maharashtra — 445 102</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div>
+            <strong>Phone</strong>
+            <span>+91-XXXXX XXXXX</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <span>info@mangalaelectrical.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div>
+            <strong>Working Hours</strong>
+            <span>Mon – Sat: 9:00 AM – 7:00 PM</span>
+          </div>
+        </div>
+        <div style="margin-top:2.5rem;">
+          <h3 style="margin-bottom:1.25rem;">Service Areas</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-size:0.78rem;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);">Yavatmal</span>
+            <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-size:0.78rem;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);">Wardha</span>
+            <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-size:0.78rem;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);">Nanded</span>
+            <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-size:0.78rem;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);">Amravati</span>
+            <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-size:0.78rem;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);">Washim</span>
+            <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-size:0.78rem;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);">Akola</span>
+            <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-size:0.78rem;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);">Nagpur</span>
+            <span style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);font-size:0.78rem;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.1);">All Maharashtra</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal reveal-delay-2">
+        <h3>Request a Quote</h3>
+        <div id="formContainer">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" id="fname" placeholder="Full Name" autocomplete="name" />
+              <span class="field-error" id="err-name"></span>
+            </div>
+            <div class="form-group">
+              <label>Company / Organisation</label>
+              <input type="text" id="fcompany" placeholder="Company Name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX" autocomplete="tel" />
+              <span class="field-error" id="err-phone"></span>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="femail" placeholder="email@company.com" autocomplete="email" />
+              <span class="field-error" id="err-email"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service Required *</label>
+            <select id="fservice">
+              <option value="">Select a Service</option>
+              <option>Solar Power Plant Support</option>
+              <option>MSEDCL &amp; Utility Works</option>
+              <option>General Manpower Supply</option>
+              <option>Site Security &amp; Supervisors</option>
+              <option>Other</option>
+            </select>
+            <span class="field-error" id="err-service"></span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Workers Required</label>
+              <select id="fworkers">
+                <option value="">Approximate Count</option>
+                <option>1–25 Workers</option>
+                <option>25–50 Workers</option>
+                <option>50–100 Workers</option>
+                <option>100–250 Workers</option>
+                <option>250–500 Workers</option>
+                <option>500+ Workers</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Project Location</label>
+              <input type="text" id="flocation" placeholder="District / State" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Project Details / Requirements</label>
+            <textarea id="fmessage" placeholder="Brief description of your project, timeline, and specific requirements..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Submit Request →</button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+          <h3 style="color:var(--white);font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;text-transform:uppercase;margin-bottom:0.5rem;">Request Received!</h3>
+          <p style="color:rgba(255,255,255,0.55);">Thank you for contacting Mangala Electrical Agency. Our team will call you within 24 hours with a customized proposal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="logo" style="margin-bottom:0.5rem;display:inline-flex;">
+          <div class="logo-icon">⚡</div>
+          <div class="logo-text">
+            <span class="logo-name">Mangala Electrical</span>
+            <span class="logo-tagline">Agency · Yavatmal, Maharashtra</span>
+          </div>
+        </a>
+        <p>Trusted manpower solutions for solar and electrical infrastructure across Maharashtra. MSEDCL-standard, PF/ESIC compliant, safety-first.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#compliance">Compliance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Solar Plant Support</a></li>
+          <li><a href="#services">MSEDCL Utility Works</a></li>
+          <li><a href="#services">General Manpower</a></li>
+          <li><a href="#services">Site Security</a></li>
+          <li><a href="#services">LT/HT Line Works</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Ner, Yavatmal, Maharashtra</a></li>
+          <li><a href="tel:+919999999999">+91-XXXXX XXXXX</a></li>
+          <li><a href="mailto:info@mangalaelectrical.com">info@mangalaelectrical.com</a></li>
+          <li><a href="#contact">Get a Quote →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Mangala Electrical Agency. All rights reserved. Ner, Yavatmal, Maharashtra.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Call Button -->
+<a href="tel:+919999999999" class="floating-call">📞 Call Now</a>
+
+<!-- Quote Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h2>Get a Quote</h2>
+    <p>Tell us your requirements and we'll respond within 24 hours.</p>
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" placeholder="Full Name" />
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" placeholder="+91 XXXXX XXXXX" />
+    </div>
+    <div class="form-group">
+      <label>Service Needed</label>
+      <select>
+        <option>Solar Power Plant Support</option>
+        <option>MSEDCL &amp; Utility Works</option>
+        <option>General Manpower Supply</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <button class="form-submit" onclick="closeModal()" style="margin-top:0.5rem;">Send Request →</button>
+  </div>
+</div>
+
+<script>
+  // ── Navigation ────────────────────────────────────
+  function toggleNav() {
+    document.getElementById('nav').classList.toggle('open');
+  }
+  document.querySelectorAll('#nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('nav').classList.remove('open');
+    });
+  });
+
+  // ── Modal ─────────────────────────────────────────
+  function openModal() { document.getElementById('modal').classList.add('open'); }
+  function closeModal() { document.getElementById('modal').classList.remove('open'); }
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // ── Scroll reveal ─────────────────────────────────
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── Header scroll effect ──────────────────────────
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    header.style.background = window.scrollY > 50
+      ? 'rgba(6,10,18,0.98)'
+      : 'rgba(10,14,23,0.95)';
+  });
+
+  // ── Smooth scroll ─────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ── Form Validation & Submit ──────────────────────
+  function clearErrors() {
+    document.querySelectorAll('.field-error').forEach(el => el.classList.remove('visible'));
+    document.querySelectorAll('.form-group input, .form-group select, .form-group textarea')
+      .forEach(el => el.classList.remove('error'));
+  }
+
+  function showError(fieldId, errorId, message) {
+    const field = document.getElementById(fieldId);
+    const error = document.getElementById(errorId);
+    if (field) field.classList.add('error');
+    if (error) { error.textContent = message; error.classList.add('visible'); }
+  }
+
+  function validateForm() {
+    clearErrors();
+    let valid = true;
+
+    // Name — required, min 2 chars
+    const name = document.getElementById('fname').value.trim();
+    if (!name) {
+      showError('fname', 'err-name', 'Full name is required.');
+      valid = false;
+    } else if (name.length < 2) {
+      showError('fname', 'err-name', 'Name must be at least 2 characters.');
+      valid = false;
+    }
+
+    // Phone — required, valid Indian mobile number
+    const phone = document.getElementById('fphone').value.trim().replace(/\s/g, '');
+    const phoneRegex = /^(\+91)?[6-9]\d{9}$/;
+    if (!phone) {
+      showError('fphone', 'err-phone', 'Phone number is required.');
+      valid = false;
+    } else if (!phoneRegex.test(phone)) {
+      showError('fphone', 'err-phone', 'Enter a valid 10-digit Indian mobile number.');
+      valid = false;
+    }
+
+    // Email — optional, valid format if provided
+    const email = document.getElementById('femail').value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email && !emailRegex.test(email)) {
+      showError('femail', 'err-email', 'Enter a valid email address (e.g. name@gmail.com).');
+      valid = false;
+    }
+
+    // Service — required
+    const service = document.getElementById('fservice').value;
+    if (!service) {
+      showError('fservice', 'err-service', 'Please select a service.');
+      valid = false;
+    }
+
+    return valid;
+  }
+
+  // Live validation — clear error as user types/changes
+  ['fname', 'fphone', 'femail', 'fservice'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => {
+      el.classList.remove('error');
+      const suffix = id.replace('f', '');
+      const errEl = document.getElementById('err-' + suffix);
+      if (errEl) errEl.classList.remove('visible');
+    });
+  });
+
+  function submitForm() {
+    if (!validateForm()) return;
+
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const formData = {
+      name:     document.getElementById('fname').value.trim(),
+      company:  document.getElementById('fcompany').value.trim(),
+      phone:    document.getElementById('fphone').value.trim(),
+      email:    document.getElementById('femail').value.trim(),
+      service:  document.getElementById('fservice').value,
+      workers:  document.getElementById('fworkers').value,
+      location: document.getElementById('flocation').value.trim(),
+      message:  document.getElementById('fmessage').value.trim(),
+    };
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById('formContainer').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        btn.textContent = 'Submit Request →';
+        btn.disabled = false;
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Submit Request →';
+      btn.disabled = false;
+      alert('Unable to connect to server. Please try again or call us directly.');
+    });
+  }
+</script>
+</body>
+</html>

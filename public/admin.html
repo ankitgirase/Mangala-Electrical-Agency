@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — Mangala Electrical Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #0056b3;
+      --blue-dark: #003d80;
+      --yellow: #ffcc00;
+      --yellow-dark: #e6b800;
+      --bg: #0a0e17;
+      --bg-card: #111827;
+      --bg-row: #141c2b;
+      --border: rgba(255,255,255,0.07);
+      --white: #ffffff;
+      --grey: rgba(255,255,255,0.45);
+      --grey-light: rgba(255,255,255,0.07);
+
+      --status-new: #3b82f6;
+      --status-contacted: #f59e0b;
+      --status-inprogress: #8b5cf6;
+      --status-closed: #10b981;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ── LOGIN SCREEN ─────────────────────────────── */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse 60% 60% at 30% 40%, rgba(0,86,179,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 70%, rgba(255,204,0,0.07) 0%, transparent 50%),
+        var(--bg);
+    }
+
+    .login-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-logo {
+      width: 56px; height: 56px;
+      background: var(--yellow);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .login-box h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .login-box p {
+      font-size: 0.85rem;
+      color: var(--grey);
+      margin-bottom: 2rem;
+    }
+
+    .login-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .login-field label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .login-field input {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .login-field input:focus { border-color: var(--yellow); }
+
+    .login-error {
+      font-size: 0.82rem;
+      color: #f87171;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .btn-login {
+      background: var(--yellow);
+      color: var(--bg);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s;
+    }
+
+    .btn-login:hover { background: var(--yellow-dark); }
+
+    /* ── DASHBOARD ────────────────────────────────── */
+    #dashboard { display: none; }
+
+    /* Sidebar */
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: #0d1421;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-brand .icon {
+      width: 36px; height: 36px;
+      background: var(--yellow);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+
+    .sidebar-brand .text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+    }
+
+    .sidebar-brand .sub {
+      font-size: 0.65rem;
+      color: var(--yellow);
+      letter-spacing: 0.1em;
+    }
+
+    .nav-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      padding: 0 1.25rem;
+      margin-bottom: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--grey);
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .nav-item:hover { color: var(--white); background: var(--grey-light); }
+    .nav-item.active { color: var(--yellow); border-left-color: var(--yellow); background: rgba(255,204,0,0.05); }
+    .nav-item .icon { font-size: 16px; width: 20px; text-align: center; }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      padding: 1rem 1.25rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .logout-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.82rem;
+      cursor: pointer;
+      padding: 8px 0;
+      transition: color 0.2s;
+    }
+
+    .logout-btn:hover { color: #f87171; }
+
+    /* Main content */
+    .main {
+      padding: 2rem 2.5rem;
+      overflow-x: hidden;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .page-header p { font-size: 0.82rem; color: var(--grey); margin-top: 2px; }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .stat-box:hover { border-color: rgba(255,255,255,0.15); }
+    .stat-box.active-filter { border-color: var(--yellow); background: rgba(255,204,0,0.05); }
+
+    .stat-box .num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.72rem;
+      color: var(--grey);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .stat-box .dot {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+
+    /* Filters bar */
+    .filters-bar {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 14px;
+    }
+
+    .search-box input {
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.88rem;
+      padding: 10px 0;
+      width: 100%;
+    }
+
+    .search-box input::placeholder { color: rgba(255,255,255,0.3); }
+
+    .filter-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.85rem;
+      padding: 10px 14px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .filter-select option { background: var(--bg-card); }
+
+    .btn-refresh {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-size: 0.85rem;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .btn-refresh:hover { background: rgba(255,255,255,0.1); }
+
+    /* Table */
+    .table-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    thead tr {
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+    }
+
+    thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+      cursor: pointer;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+    tbody td {
+      padding: 14px 16px;
+      color: rgba(255,255,255,0.85);
+      vertical-align: middle;
+    }
+
+    .td-name { font-weight: 600; color: var(--white); }
+    .td-phone { color: var(--yellow); font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; letter-spacing: 0.05em; }
+    .td-service { color: rgba(255,255,255,0.6); font-size: 0.82rem; }
+    .td-date { color: rgba(255,255,255,0.35); font-size: 0.78rem; white-space: nowrap; }
+
+    /* Status badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .badge::before { content:''; width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+    .badge-new          { background: rgba(59,130,246,0.15);  color: #60a5fa; }
+    .badge-new::before  { background: #3b82f6; }
+    .badge-contacted         { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .badge-contacted::before { background: #f59e0b; }
+    .badge-in-progress          { background: rgba(139,92,246,0.15); color: #a78bfa; }
+    .badge-in-progress::before  { background: #8b5cf6; }
+    .badge-closed          { background: rgba(16,185,129,0.15); color: #34d399; }
+    .badge-closed::before  { background: #10b981; }
+
+    /* Status select inline */
+    .status-select {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.78rem;
+      padding: 5px 8px;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .status-select:hover { border-color: rgba(255,255,255,0.3); }
+    .status-select option { background: #1a2235; }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--grey);
+    }
+
+    .empty-state .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .empty-state h3 { font-size: 1rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
+    .empty-state p  { font-size: 0.82rem; }
+
+    /* Loading spinner */
+    .spinner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+    }
+
+    .spinner::after {
+      content: '';
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top-color: var(--yellow);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--grey);
+    }
+
+    .page-btns { display: flex; gap: 0.5rem; }
+
+    .page-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--white);
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      transition: all 0.2s;
+    }
+
+    .page-btn:hover:not(:disabled) { background: rgba(255,255,255,0.1); }
+    .page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .page-btn.current { background: var(--yellow); color: var(--bg); border-color: var(--yellow); font-weight: 700; }
+
+    /* Detail drawer */
+    .drawer-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 500;
+      backdrop-filter: blur(3px);
+    }
+
+    .drawer-overlay.open { display: block; }
+
+    .drawer {
+      position: fixed;
+      top: 0; right: -480px;
+      width: 480px;
+      height: 100vh;
+      background: #0d1421;
+      border-left: 1px solid var(--border);
+      z-index: 600;
+      overflow-y: auto;
+      transition: right 0.3s cubic-bezier(0.16,1,0.3,1);
+      padding: 2rem;
+    }
+
+    .drawer.open { right: 0; }
+
+    .drawer-close {
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      background: rgba(255,255,255,0.07);
+      border: none;
+      color: var(--grey);
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .drawer-close:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+
+    .drawer h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+      padding-right: 2rem;
+    }
+
+    .drawer-meta { font-size: 0.78rem; color: var(--grey); margin-bottom: 2rem; }
+
+    .detail-row {
+      margin-bottom: 1.25rem;
+    }
+
+    .detail-row label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 4px;
+    }
+
+    .detail-row .val {
+      font-size: 0.92rem;
+      color: var(--white);
+      line-height: 1.5;
+    }
+
+    .detail-row .val.phone { color: var(--yellow); font-size: 1.05rem; font-weight: 600; }
+    .detail-row .val.message {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      white-space: pre-wrap;
+    }
+
+    .drawer-divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+    .drawer-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    .action-btn {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .action-btn:hover { background: rgba(255,255,255,0.1); }
+    .action-btn.primary { background: var(--yellow); color: var(--bg); border-color: var(--yellow); font-weight: 700; }
+    .action-btn.primary:hover { background: var(--yellow-dark); }
+    .action-btn.danger { color: #f87171; }
+    .action-btn.danger:hover { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); }
+
+    .status-changer {
+      margin-top: 1.25rem;
+    }
+
+    .status-changer label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .status-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .status-pill {
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--grey);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .status-pill:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+    .status-pill.active-new          { background: rgba(59,130,246,0.2);  border-color: #3b82f6; color: #60a5fa; }
+    .status-pill.active-contacted    { background: rgba(245,158,11,0.2);  border-color: #f59e0b; color: #fbbf24; }
+    .status-pill.active-in-progress  { background: rgba(139,92,246,0.2);  border-color: #8b5cf6; color: #a78bfa; }
+    .status-pill.active-closed       { background: rgba(16,185,129,0.2);  border-color: #10b981; color: #34d399; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      background: #1a2235;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      color: var(--white);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+      pointer-events: none;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { border-color: rgba(16,185,129,0.4); }
+    .toast.error   { border-color: rgba(248,113,113,0.4); }
+
+    @media (max-width: 768px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .main { padding: 1.25rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .drawer { width: 100%; }
+      thead th:nth-child(4),
+      tbody td:nth-child(4),
+      thead th:nth-child(5),
+      tbody td:nth-child(5) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ LOGIN ══════════════════════════════════════════ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">⚡</div>
+    <h1>Admin Panel</h1>
+    <p>Mangala Electrical Agency — Enquiry Dashboard</p>
+
+    <div class="login-field">
+      <label>Admin Token</label>
+      <input type="password" id="tokenInput" placeholder="Enter your admin token" onkeydown="if(event.key==='Enter') doLogin()" />
+    </div>
+    <div class="login-error" id="loginError">Invalid token. Please try again.</div>
+    <button class="btn-login" onclick="doLogin()">Sign In →</button>
+  </div>
+</div>
+
+<!-- ══ DASHBOARD ══════════════════════════════════════ -->
+<div id="dashboard">
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="icon">⚡</div>
+        <div>
+          <div class="text">Mangala Elec.</div>
+          <div class="sub">Admin Panel</div>
+        </div>
+      </div>
+
+      <div class="nav-label">Menu</div>
+      <div class="nav-item active" onclick="setPage('enquiries')">
+        <span class="icon">📋</span> Enquiries
+      </div>
+      <div class="nav-item" onclick="setPage('stats')">
+        <span class="icon">📊</span> Statistics
+      </div>
+
+      <div class="nav-label" style="margin-top:1rem;">Filter by Status</div>
+      <div class="nav-item" id="filter-all" onclick="setStatusFilter('')">
+        <span class="icon">🔵</span> All Enquiries
+      </div>
+      <div class="nav-item" id="filter-new" onclick="setStatusFilter('new')">
+        <span class="icon">🆕</span> New
+      </div>
+      <div class="nav-item" id="filter-contacted" onclick="setStatusFilter('contacted')">
+        <span class="icon">📞</span> Contacted
+      </div>
+      <div class="nav-item" id="filter-in-progress" onclick="setStatusFilter('in-progress')">
+        <span class="icon">⚙️</span> In Progress
+      </div>
+      <div class="nav-item" id="filter-closed" onclick="setStatusFilter('closed')">
+        <span class="icon">✅</span> Closed
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="logout-btn" onclick="doLogout()">🚪 Sign Out</div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+      <!-- Enquiries Page -->
+      <div id="pageEnquiries">
+        <div class="page-header">
+          <div>
+            <h1>Enquiries</h1>
+            <p id="pageSubtitle">All incoming manpower requests</p>
+          </div>
+          <button class="btn-refresh" onclick="loadEnquiries()">
+            🔄 Refresh
+          </button>
+        </div>
+
+        <!-- Stats row -->
+        <div class="stats-row" id="statsRow">
+          <div class="stat-box" onclick="setStatusFilter('')" id="sbox-all">
+            <div class="num" id="s-total">—</div>
+            <div class="lbl">Total</div>
+          </div>
+          <div class="stat-box" onclick="setStatusFilter('new')" id="sbox-new">
+            <div class="dot" style="background:var(--status-new)"></div>
+            <div class="num" id="s-new">—</div>
+            <div class="lbl">New</div>
+          </div>
+          <div class="stat-box" onclick="setStatusFilter('contacted')" id="sbox-contacted">
+            <div class="dot" style="background:var(--status-contacted)"></div>
+            <div class="num" id="s-contacted">—</div>
+            <div class="lbl">Contacted</div>
+          </div>
+          <div class="stat-box" onclick="setStatusFilter('in-progress')" id="sbox-in-progress">
+            <div class="dot" style="background:var(--status-inprogress)"></div>
+            <div class="num" id="s-inprogress">—</div>
+            <div class="lbl">In Progress</div>
+          </div>
+          <div class="stat-box" onclick="setStatusFilter('closed')" id="sbox-closed">
+            <div class="dot" style="background:var(--status-closed)"></div>
+            <div class="num" id="s-closed">—</div>
+            <div class="lbl">Closed</div>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-bar">
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="searchInput" placeholder="Search by name, phone, company..." oninput="onSearch()" />
+          </div>
+          <select class="filter-select" id="serviceFilter" onchange="loadEnquiries()">
+            <option value="">All Services</option>
+            <option>Solar Power Plant Support</option>
+            <option>MSEDCL &amp; Utility Works</option>
+            <option>General Manpower Supply</option>
+            <option>Site Security &amp; Supervisors</option>
+            <option>Other</option>
+          </select>
+          <select class="filter-select" id="sortFilter" onchange="loadEnquiries()">
+            <option value="-createdAt">Newest First</option>
+            <option value="createdAt">Oldest First</option>
+          </select>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrap">
+          <div id="tableBody"></div>
+          <div class="pagination" id="paginationBar" style="display:none;">
+            <span id="paginationInfo"></span>
+            <div class="page-btns" id="pageButtons"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Page -->
+      <div id="pageStats" style="display:none;">
+        <div class="page-header">
+          <div>
+            <h1>Statistics</h1>
+            <p>Overview of all enquiry data</p>
+          </div>
+          <button class="btn-refresh" onclick="loadStats()">🔄 Refresh</button>
+        </div>
+        <div id="statsContent">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Drawer overlay -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- Detail Drawer -->
+<div class="drawer" id="drawer">
+  <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <div id="drawerContent"></div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // ── Config ────────────────────────────────────────
+  // Change this to your actual backend URL when deployed
+  // e.g. 'https://mangala-api.railway.app'
+  // Leave as '' to use same origin (recommended when frontend + backend are on same server)
+  const API_BASE = '';
+
+  let adminToken = '';
+  let currentPage = 1;
+  let currentStatusFilter = '';
+  let searchTimeout = null;
+  let allStats = null;
+
+  // ── Login ─────────────────────────────────────────
+  function doLogin() {
+    const token = document.getElementById('tokenInput').value.trim();
+    if (!token) return;
+
+    // Verify token by calling /api/health (any protected endpoint)
+    fetch(`${API_BASE}/api/enquiries?token=${token}&limit=1`)
+      .then(r => {
+        if (r.status === 401) throw new Error('Invalid token');
+        return r.json();
+      })
+      .then(() => {
+        adminToken = token;
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        loadEnquiries();
+        loadStats();
+      })
+      .catch(() => {
+        document.getElementById('loginError').style.display = 'block';
+      });
+  }
+
+  function doLogout() {
+    adminToken = '';
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('tokenInput').value = '';
+    document.getElementById('loginError').style.display = 'none';
+  }
+
+  // ── Page switching ────────────────────────────────
+  function setPage(page) {
+    document.getElementById('pageEnquiries').style.display = page === 'enquiries' ? 'block' : 'none';
+    document.getElementById('pageStats').style.display     = page === 'stats'     ? 'block' : 'none';
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    if (page === 'stats') {
+      loadStats();
+      document.querySelectorAll('.nav-item')[1].classList.add('active');
+    } else {
+      document.querySelectorAll('.nav-item')[0].classList.add('active');
+    }
+  }
+
+  // ── Status filter ─────────────────────────────────
+  function setStatusFilter(status) {
+    currentStatusFilter = status;
+    currentPage = 1;
+
+    // Update sidebar highlight
+    ['all','new','contacted','in-progress','closed'].forEach(s => {
+      const el = document.getElementById(`filter-${s}`);
+      if (el) el.classList.remove('active');
+    });
+    document.getElementById(`filter-${status || 'all'}`).classList.add('active');
+
+    // Update stat boxes
+    ['sbox-all','sbox-new','sbox-contacted','sbox-in-progress','sbox-closed'].forEach(id => {
+      document.getElementById(id).classList.remove('active-filter');
+    });
+    const activeBox = status ? `sbox-${status}` : 'sbox-all';
+    document.getElementById(activeBox).classList.add('active-filter');
+
+    loadEnquiries();
+  }
+
+  // ── Search ────────────────────────────────────────
+  function onSearch() {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      currentPage = 1;
+      loadEnquiries();
+    }, 350);
+  }
+
+  // ── Load enquiries ────────────────────────────────
+  async function loadEnquiries() {
+    document.getElementById('tableBody').innerHTML = '<div class="spinner"></div>';
+    document.getElementById('paginationBar').style.display = 'none';
+
+    const status  = currentStatusFilter;
+    const search  = document.getElementById('searchInput').value.trim();
+    const service = document.getElementById('serviceFilter').value;
+    const sort    = document.getElementById('sortFilter').value;
+    const limit   = 15;
+
+    let url = `${API_BASE}/api/enquiries?token=${adminToken}&page=${currentPage}&limit=${limit}&sort=${sort}`;
+    if (status)  url += `&status=${status}`;
+    if (service) url += `&service=${encodeURIComponent(service)}`;
+
+    try {
+      const res  = await fetch(url);
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Failed to load');
+
+      let rows = data.data;
+
+      // Client-side search filter
+      if (search) {
+        const q = search.toLowerCase();
+        rows = rows.filter(e =>
+          (e.name     || '').toLowerCase().includes(q) ||
+          (e.phone    || '').toLowerCase().includes(q) ||
+          (e.company  || '').toLowerCase().includes(q) ||
+          (e.email    || '').toLowerCase().includes(q) ||
+          (e.location || '').toLowerCase().includes(q)
+        );
+      }
+      
+      // Client-side service filter (safety net in case server didn't filter)
+      if (service) {
+        rows = rows.filter(e => (e.service || '') === service);
+      }
+
+      renderTable(rows);
+      renderPagination(data.total, data.page, data.pages, limit);
+      updateStatCounts();
+
+    } catch (err) {
+      document.getElementById('tableBody').innerHTML = `
+        <div class="empty-state">
+          <div class="icon">⚠️</div>
+          <h3>Failed to load enquiries</h3>
+          <p>${err.message}</p>
+        </div>`;
+    }
+  }
+
+  // ── Render table ──────────────────────────────────
+  function renderTable(rows) {
+    if (!rows.length) {
+      document.getElementById('tableBody').innerHTML = `
+        <div class="empty-state">
+          <div class="icon">📭</div>
+          <h3>No enquiries found</h3>
+          <p>Try changing your filters or wait for new submissions.</p>
+        </div>`;
+      return;
+    }
+
+    const html = `
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Service</th>
+            <th>Workers</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(e => `
+            <tr onclick="openDrawer('${e._id}')">
+              <td>
+                <div class="td-name">${esc(e.name)}</div>
+                ${e.company ? `<div style="font-size:0.75rem;color:var(--grey);">${esc(e.company)}</div>` : ''}
+              </td>
+              <td class="td-phone">${esc(e.phone)}</td>
+              <td class="td-service">${esc(e.service)}</td>
+              <td class="td-service">${esc(e.workers || '—')}</td>
+              <td class="td-service">${esc(e.location || '—')}</td>
+              <td onclick="event.stopPropagation()">
+                <select class="status-select" onchange="updateStatus('${e._id}', this.value)">
+                  <option value="new"         ${e.status==='new'         ?'selected':''}>🆕 New</option>
+                  <option value="contacted"   ${e.status==='contacted'   ?'selected':''}>📞 Contacted</option>
+                  <option value="in-progress" ${e.status==='in-progress' ?'selected':''}>⚙️ In Progress</option>
+                  <option value="closed"      ${e.status==='closed'      ?'selected':''}>✅ Closed</option>
+                </select>
+              </td>
+              <td class="td-date">${formatDate(e.createdAt)}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>`;
+
+    document.getElementById('tableBody').innerHTML = html;
+  }
+
+  // ── Pagination ────────────────────────────────────
+  function renderPagination(total, page, pages, limit) {
+    const bar  = document.getElementById('paginationBar');
+    const info = document.getElementById('paginationInfo');
+    const btns = document.getElementById('pageButtons');
+
+    if (pages <= 1) { bar.style.display = 'none'; return; }
+
+    const from = (page - 1) * limit + 1;
+    const to   = Math.min(page * limit, total);
+    info.textContent = `Showing ${from}–${to} of ${total}`;
+
+    let html = `<button class="page-btn" onclick="goPage(${page-1})" ${page<=1?'disabled':''}>← Prev</button>`;
+    for (let i = 1; i <= pages; i++) {
+      if (i === 1 || i === pages || Math.abs(i - page) <= 1) {
+        html += `<button class="page-btn ${i===page?'current':''}" onclick="goPage(${i})">${i}</button>`;
+      } else if (Math.abs(i - page) === 2) {
+        html += `<button class="page-btn" disabled>…</button>`;
+      }
+    }
+    html += `<button class="page-btn" onclick="goPage(${page+1})" ${page>=pages?'disabled':''}>Next →</button>`;
+
+    btns.innerHTML = html;
+    bar.style.display = 'flex';
+  }
+
+  function goPage(p) { currentPage = p; loadEnquiries(); window.scrollTo(0,0); }
+
+  // ── Stats counts ──────────────────────────────────
+  async function updateStatCounts() {
+    try {
+      const res  = await fetch(`${API_BASE}/api/stats?token=${adminToken}`);
+      const data = await res.json();
+
+      document.getElementById('s-total').textContent = data.total || 0;
+
+      const map = {};
+      (data.byStatus || []).forEach(s => map[s._id] = s.count);
+      document.getElementById('s-new').textContent        = map['new']         || 0;
+      document.getElementById('s-contacted').textContent  = map['contacted']   || 0;
+      document.getElementById('s-inprogress').textContent = map['in-progress'] || 0;
+      document.getElementById('s-closed').textContent     = map['closed']      || 0;
+
+      allStats = data;
+    } catch (_) {}
+  }
+
+  // ── Stats page ────────────────────────────────────
+  async function loadStats() {
+    const container = document.getElementById('statsContent');
+    container.innerHTML = '<div class="spinner"></div>';
+    try {
+      const res  = await fetch(`${API_BASE}/api/stats?token=${adminToken}`);
+      const data = await res.json();
+
+      const statusMap = { new:'🆕 New', contacted:'📞 Contacted', 'in-progress':'⚙️ In Progress', closed:'✅ Closed' };
+      const byStatusHtml = (data.byStatus || []).map(s => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);">
+          <span style="font-size:0.9rem;">${statusMap[s._id] || s._id}</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:800;color:var(--yellow);">${s.count}</span>
+        </div>`).join('');
+
+      const byServiceHtml = (data.byService || []).map(s => `
+        <div style="margin-bottom:1rem;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:0.82rem;">
+            <span style="color:rgba(255,255,255,0.7);">${s._id}</span>
+            <span style="color:var(--yellow);font-weight:700;">${s.count}</span>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.07);border-radius:3px;">
+            <div style="height:6px;background:var(--blue);border-radius:3px;width:${Math.round(s.count/data.total*100)}%"></div>
+          </div>
+        </div>`).join('');
+
+      container.innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow);margin-bottom:1rem;">By Status</h3>
+            ${byStatusHtml || '<p style="color:var(--grey);font-size:.85rem;">No data yet</p>'}
+            <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;">
+              <span style="color:var(--grey);font-size:.8rem;">Total Enquiries</span>
+              <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:900;color:var(--white);">${data.total}</span>
+            </div>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow);margin-bottom:1.25rem;">By Service</h3>
+            ${byServiceHtml || '<p style="color:var(--grey);font-size:.85rem;">No data yet</p>'}
+          </div>
+        </div>`;
+    } catch (err) {
+      container.innerHTML = `<div class="empty-state"><div class="icon">⚠️</div><h3>Failed to load stats</h3><p>${err.message}</p></div>`;
+    }
+  }
+
+  // ── Drawer ────────────────────────────────────────
+  let drawerEnquiry = null;
+
+  async function openDrawer(id) {
+    document.getElementById('drawerOverlay').classList.add('open');
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('drawerContent').innerHTML = '<div class="spinner"></div>';
+
+    try {
+      const res = await fetch(`${API_BASE}/api/enquiries/${id}?token=${adminToken}`);
+      const e   = await res.json();
+      drawerEnquiry = e;
+      renderDrawer(e);
+    } catch (err) {
+      document.getElementById('drawerContent').innerHTML = `<p style="color:#f87171;">Failed to load: ${err.message}</p>`;
+    }
+  }
+
+  function renderDrawer(e) {
+    const statusKeys = ['new','contacted','in-progress','closed'];
+    const pillsHtml = statusKeys.map(s => `
+      <div class="status-pill ${e.status===s?'active-'+s:''}" onclick="updateStatusDrawer('${e._id}','${s}',this)">
+        ${s === 'new' ? '🆕' : s === 'contacted' ? '📞' : s === 'in-progress' ? '⚙️' : '✅'} ${s}
+      </div>`).join('');
+
+    document.getElementById('drawerContent').innerHTML = `
+      <h2>${esc(e.name)}</h2>
+      <div class="drawer-meta">Submitted on ${formatDate(e.createdAt, true)} · ID: ${e._id}</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="detail-row">
+          <label>Phone</label>
+          <div class="val phone">${esc(e.phone)}</div>
+        </div>
+        <div class="detail-row">
+          <label>Email</label>
+          <div class="val">${esc(e.email || '—')}</div>
+        </div>
+        <div class="detail-row">
+          <label>Company</label>
+          <div class="val">${esc(e.company || '—')}</div>
+        </div>
+        <div class="detail-row">
+          <label>Location</label>
+          <div class="val">${esc(e.location || '—')}</div>
+        </div>
+        <div class="detail-row">
+          <label>Service Required</label>
+          <div class="val">${esc(e.service)}</div>
+        </div>
+        <div class="detail-row">
+          <label>Workers Needed</label>
+          <div class="val">${esc(e.workers || '—')}</div>
+        </div>
+      </div>
+
+      ${e.message ? `
+        <div class="detail-row" style="margin-top:.5rem;">
+          <label>Message / Requirements</label>
+          <div class="val message">${esc(e.message)}</div>
+        </div>` : ''}
+
+      <hr class="drawer-divider" />
+
+      <div class="status-changer">
+        <label>Update Status</label>
+        <div class="status-pills" id="statusPills">${pillsHtml}</div>
+      </div>
+
+      <hr class="drawer-divider" />
+
+      <div class="drawer-actions">
+        <a href="tel:${e.phone}" class="action-btn primary">📞 Call Now</a>
+        ${e.email ? `<a href="mailto:${e.email}" class="action-btn">✉️ Email</a>` : ''}
+        <button class="action-btn danger" onclick="deleteEnquiry('${e._id}')">🗑️ Delete</button>
+      </div>
+    `;
+  }
+
+  function closeDrawer() {
+    document.getElementById('drawerOverlay').classList.remove('open');
+    document.getElementById('drawer').classList.remove('open');
+    drawerEnquiry = null;
+  }
+
+  // ── Update status ─────────────────────────────────
+  async function updateStatus(id, status) {
+    try {
+      const res = await fetch(`${API_BASE}/api/enquiries/${id}/status`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken },
+        body: JSON.stringify({ status }),
+      });
+      if (!res.ok) throw new Error('Update failed');
+      showToast('✅ Status updated', 'success');
+      updateStatCounts();
+    } catch (err) {
+      showToast('❌ ' + err.message, 'error');
+    }
+  }
+
+  async function updateStatusDrawer(id, status, pillEl) {
+    await updateStatus(id, status);
+    // Update pill highlights
+    document.querySelectorAll('#statusPills .status-pill').forEach(p => {
+      p.className = 'status-pill';
+    });
+    pillEl.classList.add('active-' + status);
+    if (drawerEnquiry) drawerEnquiry.status = status;
+  }
+
+  // ── Delete enquiry ────────────────────────────────
+  async function deleteEnquiry(id) {
+    if (!confirm('Delete this enquiry permanently? This cannot be undone.')) return;
+    try {
+      const res = await fetch(`${API_BASE}/api/enquiries/${id}?token=${adminToken}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('Delete failed');
+      showToast('🗑️ Enquiry deleted', 'success');
+      closeDrawer();
+      loadEnquiries();
+    } catch (err) {
+      showToast('❌ ' + err.message, 'error');
+    }
+  }
+
+  // ── Helpers ───────────────────────────────────────
+  function formatDate(iso, long = false) {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    if (long) return d.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' });
+    return d.toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata', day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
+  function esc(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function showToast(msg, type = 'success') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = `toast ${type} show`;
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+</script>
+</body>
+</html>
